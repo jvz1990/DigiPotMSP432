@@ -14,7 +14,8 @@ This example is based upon TI's TI-RTOS empty project. Search for @jvz for proje
 
 ## Example Usage
 
-* Button S1 (P1.1) will in/decrease resistance. Button S2 (P1.4) will change direction.
+* Button S1 (P1.1) will in/decrease resistance. 
+* Button S2 (P1.4) will change direction.
 
 ## (TI-RTOS) Application Design Details
 

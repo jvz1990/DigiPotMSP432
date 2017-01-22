@@ -24,14 +24,14 @@
  * 		  PIN 5: VW/RW: The equivalent of a wiper terminal of a potentiometer.
  *
  *
- * VERSION: 1.01
+ * VERSION: 1.02
  *
  * CHANGES:
- * 			* Cleaned project
- * 			* Added non-volatile commands.
+ * 			* Continued cleaning project.
+ * 			* Split into folders/header.
+ * 			* Added resetPot and saveVal functions.
  *
  * TODO: verify timing with oscilloscope.
- * TODO: split into header files.
  *
  */
 
@@ -92,45 +92,8 @@
 #include "Board.h"
 
 // @jvz
-UInt count = 5000;
-
-/*
- * ===== changeResistanceBtnFxn ====
- * @jvz
- *
- */
-void changeResistanceBtnFxn(unsigned int index)
-{
-    /* Clear the GPIO interrupt and increment direction */
-	GPIO_toggle(Board_P3_7);
-	//timer
-    while (--count > 1);
-    count = 5000;
-    GPIO_toggle(Board_P3_7);
-
-    //save to NVM
-    GPIO_toggle(Board_P3_5);
-    //timer
-    while (--count > 1);
-    count = 5000;
-    GPIO_toggle(Board_P3_5);
-}
-
-/*
- * ===== changeWiperDirBtnFxn ====
- * @jvz
- *
- */
-void changeWiperDirBtnFxn(unsigned int index)
-{
-    /* Clear the GPIO interrupt and toggle direction */
-	GPIO_toggle(Board_P3_6);
-
-	//timer
-    while (--count > 1);
-    count = 5000;
-
-}
+/* X9C104 Header file */
+#include <X9C104/X9C104.h>
 
 /*
  *  ======== main ========

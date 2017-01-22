@@ -159,6 +159,7 @@ main.obj: C:/ti/tirtos_msp43x_2_20_00_06/products/bios_6_46_00_23/packages/ti/sy
 main.obj: C:/ti/tirtos_msp43x_2_20_00_06/products/tidrivers_msp43x_2_20_00_08/packages/ti/drivers/GPIO.h
 main.obj: ../Board.h
 main.obj: ../MSP_EXP432P401R.h
+main.obj: C:/Users/j/workspace_v6_2/DigiPotMSP432P401R/X9C104/X9C104.h
 
 ../main.c: 
 C:/ti/xdctools_3_32_00_06_core/packages/xdc/std.h: 
@@ -319,3 +320,4 @@ C:/ti/tirtos_msp43x_2_20_00_06/products/bios_6_46_00_23/packages/ti/sysbios/knl/
 C:/ti/tirtos_msp43x_2_20_00_06/products/tidrivers_msp43x_2_20_00_08/packages/ti/drivers/GPIO.h: 
 ../Board.h: 
 ../MSP_EXP432P401R.h: 
+C:/Users/j/workspace_v6_2/DigiPotMSP432P401R/X9C104/X9C104.h: 
