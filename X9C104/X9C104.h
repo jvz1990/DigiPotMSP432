@@ -35,6 +35,7 @@
 #define DIR Board_P3_6
 #define CS Board_P3_5
 
+#define TICKS 180
 /*
  * ===== changeResistanceBtnFxn ====
  * @jvz

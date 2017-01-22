@@ -17,6 +17,11 @@ This example is based upon TI's TI-RTOS empty project. Search for @jvz for proje
 * Button S1 (P1.1) will in/decrease resistance. 
 * Button S2 (P1.4) will change direction.
 
+## MSP432 Timing
+
+180 ticks equates to roughly 54.33uS. Can reduce this number down to 1uS for faster results in feedback loops
+![alt tag](timing.png)
+
 ## (TI-RTOS) Application Design Details
 
 This examples is the same as the __Empty_Minimal__ example except many

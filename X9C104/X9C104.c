@@ -9,14 +9,20 @@
 #include <xdc/std.h>
 #include <ti/drivers/GPIO.h>
 
-UInt count = 5000;
+UInt count = TICKS;
 
 void changeResistanceBtnFxn(unsigned int index) {
+
+	//acts as a debouncer
+	count = 10000;
+	while (--count > 1);
+	count = TICKS;
+
     /* Clear the GPIO interrupt and increment direction */
-	GPIO_toggle(INC);
+	GPIO_write(INC, 0);
 	//timer
     while (--count > 1);
-    count = 5000;
+    count = TICKS;
     GPIO_toggle(INC);
 
 #ifndef SAVEVAL_
@@ -31,7 +37,7 @@ void changeWiperDirBtnFxn(unsigned int index) {
 
 	//timer
     while (--count > 1);
-    count = 5000;
+    count = TICKS;
 }
 
 // good function to test timing
@@ -45,7 +51,7 @@ void resetPot(void) {
 		GPIO_toggle(INC);
 		//timer
 	    while (--count > 1);
-	    count = 5000;
+	    count = TICKS;
 	    GPIO_toggle(INC);
 	}
 
@@ -59,7 +65,7 @@ void saveVal(void) {
     GPIO_toggle(CS);
     //timer
     while (--count > 1);
-    count = 5000;
+    count = TICKS;
     GPIO_toggle(CS);
 
     // ensure CS is LOW

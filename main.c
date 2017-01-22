@@ -24,14 +24,11 @@
  * 		  PIN 5: VW/RW: The equivalent of a wiper terminal of a potentiometer.
  *
  *
- * VERSION: 1.02
+ * VERSION: 1.10 (final)
  *
  * CHANGES:
- * 			* Continued cleaning project.
- * 			* Split into folders/header.
- * 			* Added resetPot and saveVal functions.
+ *			* Verified timing via oscilloscope. Leaving timing @ ~54uS
  *
- * TODO: verify timing with oscilloscope.
  *
  */
 
