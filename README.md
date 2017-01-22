@@ -20,7 +20,7 @@ This example is based upon TI's TI-RTOS empty project. Search for @jvz for proje
 ## MSP432 Timing
 
 180 ticks equates to roughly 54.33uS. Can reduce this number down to 1uS for faster results in feedback loops
-![alt tag](timing.png)
+![Oscilloscope timing](https://github.com/jvz1990/DigiPotMSP432/blob/master/timing.PNG)
 
 ## (TI-RTOS) Application Design Details
 
