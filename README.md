@@ -1,19 +1,22 @@
-## Example Summary
+## DigiPot X9C104 Example Summary
 
-This example is intended to be a starting point for new development where
-a fuller set of kernel features and debug capabilities are enabled.
+Digipot Example using the X9C104 as a DCP (Digitally Controlled Potentiometer) along with the MSP432 as uC.
+Button S1 (P1.1) will in/decrease resistance. Button S2 (P1.4) will change direction.
+Resistance range of 0 -  100kOhms. 100 Wiper tap points (1kOhm steps).
+This example is based upon TI's TI-RTOS empty project. Search for @jvz for project modifications.
+
+** See main.c for more details **
 
 ## Peripherals Exercised
 
-* `Board_LED0`  - Indicates that the board was initialized within `main()`
+* `X9C104` DCP - See `X9C104` folder.
+* `GPIO Buttons` - See main() for interupts.
 
 ## Example Usage
 
-* The example lights `Board_LED0` as part of the initialization in `main()`.
-Then a heartBeat task toggles the LED at a rate determined by the `arg0`
-parameter for the constructed Task instance in the .c file.
+* Button S1 (P1.1) will in/decrease resistance. Button S2 (P1.4) will change direction.
 
-## Application Design Details
+## (TI-RTOS) Application Design Details
 
 This examples is the same as the __Empty_Minimal__ example except many
 development and debug features are enabled. For example:
@@ -28,7 +31,7 @@ development and debug features are enabled. For example:
 > TI-RTOS User Guide *spruhd4.pdf* for a complete and detailed list of the
 > differences between the empty minimal and empty projects.
 
-## References
+## (TI) References
 * For GNU and IAR users, please read the following website for details
   about enabling [semi-hosting](http://processors.wiki.ti.com/index.php/TI-RTOS_Examples_SemiHosting)
   in order to view console output.

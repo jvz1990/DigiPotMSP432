@@ -73,6 +73,7 @@ extern "C" {
 /*
  * defines for the demo @jvz
  */
+#define Board_P3_5					MSP_EXP432P401R_P3_5 // UP/DOWN
 #define Board_P3_6					MSP_EXP432P401R_P3_6 // UP/DOWN
 #define Board_P3_7					MSP_EXP432P401R_P3_7 // INC
 

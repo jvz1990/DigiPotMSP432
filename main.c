@@ -16,18 +16,20 @@
  * 		  PIN 2: UP/DOWN: Controls the movement direction of wiper. Positive -> UP. GND -> DOWN.
  * 		  		 2.9 uS MIN U/D to INC setup.
  * 		  		 100ns MIN INC HIGH to U/D change.
- * 		  PIN 7: CS: Controls the value stored in non-volatile memory. Grounded for now.
+ * 		  PIN 7: CS: Controls the value stored in non-volatile memory. Connect to P3.5.
+ * 		  			 Leave grounded to activate device. High for storing current value.
  *
  * 		  OUTPUTS:
  * 		  PIN 6: RL/VL: The equivalent of a low terminal of a potentiometer.
  * 		  PIN 5: VW/RW: The equivalent of a wiper terminal of a potentiometer.
  *
  *
- * VERSION: 1.00
+ * VERSION: 1.01
  *
- * CHANGES: N/A
+ * CHANGES:
+ * 			* Cleaned project
+ * 			* Added non-volatile commands.
  *
- * TODO: make use of non-volatile storage.
  * TODO: verify timing with oscilloscope.
  * TODO: split into header files.
  *
@@ -89,26 +91,8 @@
 /* Board Header file */
 #include "Board.h"
 
-/*#define TASKSTACKSIZE   512
-
-Task_Struct task0Struct;
-Char task0Stack[TASKSTACKSIZE];
-
-
- *  ======== heartBeatFxn ========
- *  Toggle the Board_LED0. The Task_sleep is determined by arg0 which
- *  is configured for the heartBeat Task instance.
-
-Void heartBeatFxn(UArg arg0, UArg arg1)
-{
-    while (1) {
-        Task_sleep((UInt)arg0);
-        GPIO_toggle(Board_LED0);
-    }
-}*/
-
 // @jvz
-UInt count = 10000;
+UInt count = 5000;
 
 /*
  * ===== changeResistanceBtnFxn ====
@@ -118,13 +102,18 @@ UInt count = 10000;
 void changeResistanceBtnFxn(unsigned int index)
 {
     /* Clear the GPIO interrupt and increment direction */
-	GPIO_write(Board_P3_7, 0);
-
+	GPIO_toggle(Board_P3_7);
 	//timer
-    while (count-- > 1);
-    count = 10000;
+    while (--count > 1);
+    count = 5000;
+    GPIO_toggle(Board_P3_7);
 
-    GPIO_write(Board_P3_7, 1);
+    //save to NVM
+    GPIO_toggle(Board_P3_5);
+    //timer
+    while (--count > 1);
+    count = 5000;
+    GPIO_toggle(Board_P3_5);
 }
 
 /*
@@ -138,8 +127,8 @@ void changeWiperDirBtnFxn(unsigned int index)
 	GPIO_toggle(Board_P3_6);
 
 	//timer
-    while (count-- > 1);
-    count = 10000;
+    while (--count > 1);
+    count = 5000;
 
 }
 
@@ -160,22 +149,7 @@ int main(void)
     // Board_initWatchdog();
     // Board_initWiFi();
 
-    /* Construct heartBeat Task  thread */
-/*    Task_Params_init(&taskParams);
-    taskParams.arg0 = 1000;
-    taskParams.stackSize = TASKSTACKSIZE;
-    taskParams.stack = &task0Stack;
-    Task_construct(&task0Struct, (Task_FuncPtr)heartBeatFxn, &taskParams, NULL);*/
-
-    /* Turn on user LED */
-    //GPIO_write(Board_LED0, Board_LED_ON);
-
-    System_printf("Starting the example\nSystem provider is set to SysMin. "
-                  "Halt the target to view any SysMin contents in ROV.\n");
-    /* SysMin will only print to the console when you call flush or exit */
-    System_flush();
-
-    /* install Button callback */
+    /* Install Button callback */
     GPIO_setCallback(Board_BUTTON0, changeResistanceBtnFxn);
 
     /* Enable interrupts */
